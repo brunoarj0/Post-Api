@@ -61,5 +61,14 @@ namespace Minimal.Api.Controllers
             await _mediator.Send(deletePost);
             return NoContent();
         }
+
+        [Route("/api/posts/upload")]
+        [HttpPost]
+        public async Task<IActionResult> UploadPost(IFormFile file)
+        {
+            var uploadFile = file;
+            await _mediator.Send(uploadFile);
+            return Ok(uploadFile);
+        }
     }
 }
