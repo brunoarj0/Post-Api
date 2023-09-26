@@ -16,6 +16,9 @@ namespace Minimal.Application.Posts.CommandHandlers
 
         public async Task<Post> Handle(CreatePost request, CancellationToken cancellationToken)
         {
+            if (request.PostContent == "hello")
+                throw new ArgumentException("hello already exists");
+
             var newPost = new Post
             {
                 Content = request.PostContent
